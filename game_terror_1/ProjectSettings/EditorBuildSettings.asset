@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/telaInicial.unity
+    guid: 6c8614c05dbb1bb43bc89c7d70a2a3df
+  - enabled: 1
+    path: Assets/Scenes/telaIntroducao.unity
+    guid: b30e9fb9cf8bb1b448b7a74d0f41fb6d
+  - enabled: 1
+    path: Assets/Scenes/telaSala.unity
+    guid: 0c7a49ae1e25713448353ab8ce20a3ec
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
