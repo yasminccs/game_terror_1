@@ -14,7 +14,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/telaSala.unity
     guid: 0c7a49ae1e25713448353ab8ce20a3ec
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/telaBanheiro.unity
+    guid: 748dd5bbda4864140b9de495e8d546c4
+  - enabled: 1
+    path: Assets/Scenes/telaCozinha.unity
+    guid: c4a79b7303dc8794eba61f215f321a08
+  - enabled: 1
+    path: Assets/Scenes/telaQuartoPersonagem.unity
+    guid: 2bb9fb2a690481e4cab141c71e640778
+  - enabled: 1
+    path: Assets/Scenes/telaQuartoCasal.unity
+    guid: d99edc23fbb27fa4494fa6570be9b1ef
   m_configObjects: {}

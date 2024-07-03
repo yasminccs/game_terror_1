@@ -5,57 +5,74 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;  // Velocidade de movimento do personagem
-    private Vector3 targetPosition;  // Posição alvo para onde o personagem se moverá
-    private bool isMoving = false;  // Indicador se o personagem está se movendo
-    private Animator animator;  // Referência ao componente Animator
-    private SpriteRenderer spriteRenderer;  // Referência ao componente SpriteRenderer
+    private Vector3 targetPosition;  // PosiÃ§Ã£o alvo para onde o personagem se moverÃ¡
+    private bool isMoving = false;  // Indicador se o personagem estÃ¡ se movendo
+    private Animator animator;  // ReferÃªncia ao componente Animator
+    private SpriteRenderer spriteRenderer;  // ReferÃªncia ao componente SpriteRenderer
+    private Rigidbody2D rb;  // ReferÃªncia ao componente Rigidbody2D
 
     void Start()
     {
-        // Inicialmente, a posição alvo é a posição inicial do personagem
+        // Inicialmente, a posiÃ§Ã£o alvo Ã© a posiÃ§Ã£o inicial do personagem
         targetPosition = transform.position;
-        // Obtém a referência ao componente Animator
+        // ObtÃ©m a referÃªncia ao componente Animator
         animator = GetComponent<Animator>();
-        // Obtém a referência ao componente SpriteRenderer
+        // ObtÃ©m a referÃªncia ao componente SpriteRenderer
         spriteRenderer = GetComponent<SpriteRenderer>();
+        // ObtÃ©m a referÃªncia ao componente Rigidbody2D
+        rb = GetComponent<Rigidbody2D>();
+
+        // Certifique-se de que o Rigidbody2D estÃ¡ configurado como Kinematic
+        rb.bodyType = RigidbodyType2D.Kinematic;
     }
 
     void Update()
     {
-        // Verifica se o botão esquerdo do mouse foi clicado
+        // Verifica se o botÃ£o esquerdo do mouse foi clicado
         if (Input.GetMouseButtonDown(0))
         {
-            // Converte a posição do clique do mouse para a posição no mundo
-            targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            targetPosition.z = transform.position.z;  // Mantém a posição z do personagem
-            isMoving = true;  // Define o personagem como em movimento
+            // Converte a posiÃ§Ã£o do clique do mouse para a posiÃ§Ã£o no mundo
+            Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            clickPosition.z = transform.position.z;  // MantÃ©m a posiÃ§Ã£o z do personagem
 
-            // Verifica a direção do movimento para virar o personagem
-            if (targetPosition.x > transform.position.x)
+            // Verifica se hÃ¡ colisÃ£o no caminho para a posiÃ§Ã£o clicada
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, clickPosition - transform.position, Vector2.Distance(transform.position, clickPosition));
+            if (hit.collider == null)
             {
-                // Vira o personagem para a direita
-                spriteRenderer.flipX = false;
-            }
-            else if (targetPosition.x < transform.position.x)
-            {
-                // Vira o personagem para a esquerda
-                spriteRenderer.flipX = true;
+                targetPosition = clickPosition;
+                isMoving = true;  // Define o personagem como em movimento
+
+                // Verifica a direÃ§Ã£o do movimento para virar o personagem
+                if (targetPosition.x > transform.position.x)
+                {
+                    // Vira o personagem para a direita
+                    spriteRenderer.flipX = false;
+                }
+                else if (targetPosition.x < transform.position.x)
+                {
+                    // Vira o personagem para a esquerda
+                    spriteRenderer.flipX = true;
+                }
             }
         }
 
-        // Se o personagem estiver se movendo, move-o em direção à posição alvo
+        // Se o personagem estiver se movendo, move-o em direÃ§Ã£o Ã  posiÃ§Ã£o alvo
         if (isMoving)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+            Vector3 direction = (targetPosition - transform.position).normalized;
+            Vector2 move = direction * moveSpeed * Time.deltaTime;
 
-            // Verifica se o personagem chegou à posição alvo
+            // Movimenta o personagem usando MovePosition
+            rb.MovePosition(rb.position + move);
+
+            // Verifica se o personagem chegou Ã  posiÃ§Ã£o alvo
             if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
             {
                 isMoving = false;  // Define o personagem como parado
             }
         }
 
-        // Define o parâmetro isWalking no Animator
+        // Define o parÃ¢metro isWalking no Animator
         animator.SetBool("isWalking", isMoving);
     }
 }
