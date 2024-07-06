@@ -1,4 +1,4 @@
-# My Unity Game
+# House Of Lost Memories
 
 ## Descrição
 "House Of Lost Memories" é um jogo de terror point-and-click com uma narrativa envolvente. O objetivo do jogador é explorar cada fase, passar pelos puzzles e, ao final, desvendar um segredo oculto que amarra toda a história.
@@ -23,3 +23,6 @@
 
 ## Equipe de Desenvolvimento
 - **Programadores:** Yasmin Cibreiros Chagas, Victor Vianna e Eduardo Brandão.
+
+## Observação
+- **Trabalho da disciplina de Desenvolvimento de Jogos Digitais**
