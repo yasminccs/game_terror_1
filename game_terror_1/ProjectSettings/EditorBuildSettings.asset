@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/telaQuartoCasal.unity
     guid: d99edc23fbb27fa4494fa6570be9b1ef
+  - enabled: 1
+    path: Assets/Scenes/Fim.unity
+    guid: 82c9ad91b8ff5bf44be01ef8efc72255
+  - enabled: 0
+    path: Assets/MemoryGame.unity
+    guid: 207249bbf8e3eef43be066b4a6590beb
   m_configObjects: {}
