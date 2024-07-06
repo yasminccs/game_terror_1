@@ -17,6 +17,7 @@
     - Inicie o Unity Hub.
     - Clique em `Add` e selecione a pasta do projeto clonado.
     - Abra o projeto no Unity.
+    - Na pasta "Jogo Completo House Of Lost Memories" contém o executável do jogo.
 
 ## Controles
 - **Interação:** utiliza-se apenas o mouse.
